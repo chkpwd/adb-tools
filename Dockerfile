@@ -28,7 +28,7 @@ RUN upx --best --lzma adb
 FROM debian:${FINAL_IMAGE_TAG}
 
 # Copy adb binary from build stage
-COPY --from=build /tmp/android-sdk/platform-tools /android-tools
+COPY --from=build /tmp/android-sdk/platform-tools/adb /usr/bin/adb
 
 # Set the entrypoint
-ENTRYPOINT [ "/android-tools/adb" ]
+ENTRYPOINT [ "adb" ]
